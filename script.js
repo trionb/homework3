@@ -1,128 +1,85 @@
-// // // Assignment Code
-    var generateBtn = document.getElementById("#generate");
+//Assign Code
+var generatebtn=document.getElementById("#generate");
 
-    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
-    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    
-    var symbols = ["~", "!", "@", "#", "$", "%", "^", "&", "*","(", ")", "_", "+"]
-    
-    var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-    var combinedArr = [];
-    var values =("uppercase", "lowercase", "symbols", "numeric");
-    
-       //set password length 
-    function generate() {  
-        var complexity=document.getElementById("#password")
-        
-        while (isNaN(length) || length < 8 || length > 128) passwordLength = numeric(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
+var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-        // var passwordLength =prompt("How many characters would you like your password to contain");
-     
+var symbols = ["~", "!", "@", "#", "$", "%", "^", "&", "*","(", ")", "_", "+"]
+
+var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+var combinedArr = [];
+
+var password="";
+
+//Write password to the #password input
+    
+function writePassword()    {
+    var password =generatedPassword("uppercase, lowercase,symbols,numeric");
+    var passwordText=document.getElementById("password");
+    passwordText.value=result;
+
+
+    var functionArray = {
+        getNumeric: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+        },
+    
+        getLowercase: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+        },
+    
+        getUppercase: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+        },
+    
+        getSymbols: function() {
+          return symbols[Math.floor(Math.random() * symbols.length)]
+        }
+    
+    };
+
+}
+
+function generate(){
+
     var numericCharacters=confirm("Do you want numeric Characters");
 
     if(numericCharacters === true) {
         combinedArr = combinedArr.concat(numeric)
-    }
+    } 
+
+    //console.log(numeric);
 
      var lowercaseCharacter=confirm("Do you want lowercase Characters");
       if (lowercaseCharacter === true)  {
           combinedArr=combinedArr.concat(lowercase)
       }
+      //console.log(lowercase);
 
      var uppercaseCharacter=confirm("Do you want uppercase Characters");
       if (uppercaseCharacter === true)  {
-         combinedArr=combinedArr.concat(uppercase)
+          combinedArr=combinedArr.concat(uppercase)
       }
+      //console.log(uppercase);
 
      var symbolsCharacter=confirm("Do you want symbol Characters");
      if (symbolsCharacter === true)  {
-        combinedArr=combinedArr.concat(symbols)
-     }
+       combinedArr=combinedArr.concat(symbols)
+     } 
+     //console.log(symbols);
+    }
+     console.log(combinedArr)
+      // this is a minimum count for numbers, lowerCases, upperCases & specialCharacters
+    var minimumCount=0
 
-     var minimumCount =0
-     var minimumNumeric = "";
-     var minimumLowerCase = "";
-     var minimumUpperCase = "";
-     var minimumSymbolsCharacters = "";
+      // Empty minimums for numbers, lowerCases, upperCases & specialCharacters
+    var miniNumerics="";
+    var miniLowercase="";
+    var miniUppercase="";
+    var miniSymbols="";
 
-     var functionArray = {
-        getNumeric: function() {
-          return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-        },
-    
-        getLowerCase: function() {
-          return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-        },
-    
-        getUpperCase: function() {
-          return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-        },
-    
-        getSymbolsCharacters: function() {
-          return specialCharacters[Math.floor(Math.random() * symbolsCharacters.length)]
-        }
-        //values
-
-        // values="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+";
-    
-        // password="";
-
-//create loop
-    // for(var i=0; i <= complexity; i++){
-    //     password=password+values.charAt(Math.floor(Math.random() *Math.floor(values.length -1)));
-    // }
-
-    // document.getElementById("password").value=password
-    
-}
+   
   
-    // function writePassword()    {
-    //     var password =generatedPassword();
-    //     var passwordText=document.getElementById("password");
-
-    //     passwordText.value= password;
-    // }
-   
-   
-
-    // var passwordLength =prompt("How many characters would you like your password to contain");
      
-    // var numericCharacters=confirm("Do you want numeric Characters");
-
-    // if(numericCharacters === true) {
-    //     combinedArr = combinedArr.concat(numeric)
-    // }
-
-    //  var lowercaseCharacter=confirm("Do you want lowercase Characters");
-    //   if (lowercaseCharacter === true)  {
-    //       combinedArr=combinedArr.concat(lowercase)
-    //   }
-
-    //  var uppercaseCharacter=confirm("Do you want uppercase Characters");
-    //   if (uppercaseCharacter === true)  {
-    //      combinedArr=combinedArr.concat(uppercase)
-    //   }
-
-    //  var symbolsCharacter=confirm("Do you want symbol Characters");
-    //  if (symbolsCharacter === true)  {
-    //     combinedArr=combinedArr.concat(symbols)
-    //  }
-
-    //  var functionArray = {
-    //     getNumeric: function() {
-    //       return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-    //     },
-    
-    //     getLowerCase: function() {
-    //       return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-    //     },
-    
-    //     getUpperCase: function() {
-    //       return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-    //     },
-    
-    //     getSymbolsCharacters: function() {
-    //       return specialCharacters[Math.floor(Math.random() * symbolsCharacters.length)]
-    //     }
- };
