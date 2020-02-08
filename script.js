@@ -1,60 +1,126 @@
 // // // Assignment Code
-//  var generateBtn = document.querySelector("#generate");
- 
-//  values="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+~"
- 
- 
-// // // Write password to the #password input
-//    function writePassword() {
-//    var password = generatePassword();
-//    var passwordText = document.querySelector("#password");
-   
+    var generateBtn = document.getElementById("#generate");
+
+    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
-//    passwordText.value = password;
+    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    
+    var symbols = ["~", "!", "@", "#", "$", "%", "^", "&", "*","(", ")", "_", "+"]
+    
+    var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    var combinedArr = [];
+    var values =("uppercase", "lowercase", "symbols", "numeric");
 
-//     for(var i=o; 1 <= generateBtn; i++) {
-//     password=password + values.charAt(Math.floor(Math.random()* Math.floor(values.length-1)));
+       //set password length 
+    function generate() {  
+        var complexity=document.getElementById("#password")
+      
+        var passwordLength =prompt("How many characters would you like your password to contain");
+     
+    var numericCharacters=confirm("Do you want numeric Characters");
 
-//    }
+    if(numericCharacters === true) {
+        combinedArr = combinedArr.concat(numeric)
+    }
 
+     var lowercaseCharacter=confirm("Do you want lowercase Characters");
+      if (lowercaseCharacter === true)  {
+          combinedArr=combinedArr.concat(lowercase)
+      }
 
-//   // Add event listener to generate button
-   //generateBtn.addEventListener("click", writePassword);
+     var uppercaseCharacter=confirm("Do you want uppercase Characters");
+      if (uppercaseCharacter === true)  {
+         combinedArr=combinedArr.concat(uppercase)
+      }
 
- 
+     var symbolsCharacter=confirm("Do you want symbol Characters");
+     if (symbolsCharacter === true)  {
+        combinedArr=combinedArr.concat(symbols)
+     }
 
+     var minimumCount =0
+     var minimumNumeric = "";
+     var minimumLowerCase = "";
+     var minimumUpperCase = "";
+     var minimumSymbolsCharacters = "";
 
-    // document.getElementById("generate").addEventListener("click", function(){
-    //   prompt("How many characters would you like your password to contain");
+     var functionArray = {
+        getNumeric: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+        },
+    
+        getLowerCase: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+        },
+    
+        getUpperCase: function() {
+          return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+        },
+    
+        getSymbolsCharacters: function() {
+          return specialCharacters[Math.floor(Math.random() * symbolsCharacters.length)]
+        }
+        //values
 
+        // values="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+";
+    
+        // password="";
+
+//create loop
+    for(var i=0; i <= complexity; i++){
+        password=password+values.charAt(Math.floor(Math.random() *Math.floor(values.length -1)));
+    }
+
+    document.getElementById("password").value=password
+    
+}
   
+    // function writePassword()    {
+    //     var password =generatedPassword();
+    //     var passwordText=document.getElementById("password");
 
-
-       function generate() {
-      prompt("How many characters would you like your password to contain");
-          for(var i =0; i =>128; i++){
-            console.log(i);
-          }
-            
-      confirm("Do you want special characters?");
-
-      confirm("Do you want numeric Characters");
-
-      confirm("Do you want lowercase Characters");
-
-      confirm("Do you want uppercase Characters");
-   }
-
-
+    //     passwordText.value= password;
+    // }
+   
    
 
+    // var passwordLength =prompt("How many characters would you like your password to contain");
+     
+    // var numericCharacters=confirm("Do you want numeric Characters");
+
+    // if(numericCharacters === true) {
+    //     combinedArr = combinedArr.concat(numeric)
+    // }
+
+    //  var lowercaseCharacter=confirm("Do you want lowercase Characters");
+    //   if (lowercaseCharacter === true)  {
+    //       combinedArr=combinedArr.concat(lowercase)
+    //   }
+
+    //  var uppercaseCharacter=confirm("Do you want uppercase Characters");
+    //   if (uppercaseCharacter === true)  {
+    //      combinedArr=combinedArr.concat(uppercase)
+    //   }
+
+    //  var symbolsCharacter=confirm("Do you want symbol Characters");
+    //  if (symbolsCharacter === true)  {
+    //     combinedArr=combinedArr.concat(symbols)
+    //  }
+
+    //  var functionArray = {
+    //     getNumeric: function() {
+    //       return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+    //     },
     
-
-// function geRandomLower(){
-//   return String.fromCharCode(97);
-// }
-// console.log(Math.floor(Math.random() * 26) + 97)
-
-
-// var characterLength
-// var specialCharacters 
+    //     getLowerCase: function() {
+    //       return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+    //     },
+    
+    //     getUpperCase: function() {
+    //       return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+    //     },
+    
+    //     getSymbolsCharacters: function() {
+    //       return specialCharacters[Math.floor(Math.random() * symbolsCharacters.length)]
+    //     }
+    //  };
