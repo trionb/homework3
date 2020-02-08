@@ -10,12 +10,14 @@
     var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     var combinedArr = [];
     var values =("uppercase", "lowercase", "symbols", "numeric");
-
+    
        //set password length 
     function generate() {  
         var complexity=document.getElementById("#password")
-      
-        var passwordLength =prompt("How many characters would you like your password to contain");
+        
+        while (isNaN(length) || length < 8 || length > 128) passwordLength = numeric(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
+
+        // var passwordLength =prompt("How many characters would you like your password to contain");
      
     var numericCharacters=confirm("Do you want numeric Characters");
 
@@ -67,11 +69,11 @@
         // password="";
 
 //create loop
-    for(var i=0; i <= complexity; i++){
-        password=password+values.charAt(Math.floor(Math.random() *Math.floor(values.length -1)));
-    }
+    // for(var i=0; i <= complexity; i++){
+    //     password=password+values.charAt(Math.floor(Math.random() *Math.floor(values.length -1)));
+    // }
 
-    document.getElementById("password").value=password
+    // document.getElementById("password").value=password
     
 }
   
@@ -123,4 +125,4 @@
     //     getSymbolsCharacters: function() {
     //       return specialCharacters[Math.floor(Math.random() * symbolsCharacters.length)]
     //     }
-    //  };
+ };
